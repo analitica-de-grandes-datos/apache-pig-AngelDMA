@@ -21,7 +21,7 @@ lines = LOAD 'data.tsv' USING PigStorage('\t')
 
 letras_agrupadas = GROUP lines BY letra;
 
-letras_conteo = FOREACH letras_agrupadas GENERATE group, COUNT();
+letras_conteo = FOREACH letras_agrupadas GENERATE group, COUNT(lines);
 
 STORE letras_agrupadas INTO 'output/' USING PigStorage(',');
 
