@@ -33,6 +33,6 @@ p = LOAD 'data.csv' USING PigStorage(',')
 p1 = FOREACH p GENERATE nombre,color;
 p2 = FILTER p1 BY (color matches 'blue' and nombre matches 'Z.*');
 
-DUMP p2;
+--DUMP p2;
 
---STORE p2 INTO 'output/' USING PigStorage(',');
+STORE p2 INTO 'output/' USING PigStorage(',');
