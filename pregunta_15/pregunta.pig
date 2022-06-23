@@ -37,3 +37,5 @@ p3 = FOREACH p2 GENERATE CONCAT(nombre, ' ', color);
 --DUMP p3;
 
 STORE p3 INTO 'output/' USING PigStorage(',');
+ 
+ 
