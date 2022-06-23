@@ -42,7 +42,7 @@ p = LOAD 'data.csv' USING PigStorage(',')
                 numero2:chararray
         );
 
-p1 = FOREACH p GENERATE apellido, UPPER(apellido), apellido AS apellido2;
+p1 = FOREACH p GENERATE apellido, UPPER(apellido), LOWER(apellido) AS apellido2;
 p2 = ORDER p1 BY apellido ASC;
 
 --DUMP p2;
