@@ -50,4 +50,6 @@ drivers_l2 = LIMIT drivers_l 10;
 
 drivers_l2_ordered = ORDER drivers_l2 by driverId, truckId, eventTime;
 
+--DUMP drivers_l2_ordered;
+
 STORE drivers_l2_ordered INTO 'output/' USING PigStorage(',');
