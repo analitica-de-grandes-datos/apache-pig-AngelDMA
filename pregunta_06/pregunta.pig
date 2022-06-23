@@ -29,4 +29,6 @@ maps3 = GROUP maps2 BY maps2;
 
 maps4 = FOREACH maps3 GENERATE group, COUNT(maps2);
 
-DUMP maps4;
+--DUMP maps4;
+
+STORE maps4 INTO 'output/' USING PigStorage(',');
