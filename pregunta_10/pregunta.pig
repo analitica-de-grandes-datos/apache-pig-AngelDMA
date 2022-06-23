@@ -35,4 +35,6 @@ p1 = FOREACH p GENERATE apellido, SIZE(apellido) AS s;
 p2 = ORDER p1 BY s DESC, apellido;
 p3 = LIMIT p2 5;
 
-DUMP p3;
+--DUMP p3;
+
+STORE p3 INTO 'output/' USING PigStorage(',');
