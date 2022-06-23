@@ -34,6 +34,6 @@ p = LOAD 'data.csv' USING PigStorage(',')
 p1 = FOREACH p GENERATE nombre;
 p2 = FILTER p1 BY (nombre matches '[M-Z].*');
 
-DUMP p2;
+--DUMP p2;
 
---STORE p2 INTO 'output/' USING PigStorage(',');
+STORE p2 INTO 'output/' USING PigStorage(',');
