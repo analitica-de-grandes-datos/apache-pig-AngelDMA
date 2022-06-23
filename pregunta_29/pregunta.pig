@@ -33,4 +33,36 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
+p = LOAD 'data.csv' USING PigStorage(',')
+        AS (
+                numero:int,
+                nombre:chararray,
+                apellido:chararray,
+                fecha:chararray,
+                color:chararray,
+                numero2:chararray
+        );
+
+p1 = FOREACH p GENERATE fecha,
+        (CASE (int)REGEX_EXTRACT(fecha,'.*-([0-9][0-9])-.*',1)
+                WHEN 1 THEN 'ene'
+                WHEN 2 THEN 'feb'
+                WHEN 3 THEN 'mar'
+                WHEN 4 THEN 'abr'
+                WHEN 5 THEN 'may'
+                WHEN 6 THEN 'jun'
+                WHEN 7 THEN 'jul'
+                WHEN 8 THEN 'ago'
+                WHEN 9 THEN 'sep'
+                WHEN 10 THEN 'oct'
+                WHEN 11 THEN 'nov'
+                ELSE 'dic'
+        END
+        ),
+        REGEX_EXTRACT(fecha,'.*-([0-9][0-9])-.*',1), 
+        (int)REGEX_EXTRACT(fecha,'.*-([0-9][0-9])-.*',1);
+
+--DUMP p1;
+
+STORE p1 INTO 'output/' USING PigStorage(',');
 
