@@ -51,7 +51,7 @@ p1 = FOREACH p0 GENERATE fecha1,
         (CASE ToString(fecha,'EEE')
                 WHEN 'Mon' THEN 'lun'
                 WHEN 'Tue' THEN 'mar'
-                WHEN 'Wed' THEN 'mier'
+                WHEN 'Wed' THEN 'mie'
                 WHEN 'Thu' THEN 'jue'
                 WHEN 'Fri' THEN 'vie'
                 WHEN 'Sat' THEN 'sab'
